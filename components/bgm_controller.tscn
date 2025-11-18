@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://s065pm758oga"]
 
 [ext_resource type="Script" uid="uid://dcjaj0trskij4" path="res://components/bgm_controller.gd" id="1_65hq4"]
-[ext_resource type="AudioStream" uid="uid://unlhu8ac2iba" path="res://assets/audio/drum_loop.wav" id="2_wnip8"]
+[ext_resource type="AudioStream" uid="uid://unlhu8ac2iba" path="res://assets/audio/tutorial_level/drum_loop.wav" id="2_wnip8"]
 
 [node name="BGMController" type="Node2D"]
 script = ExtResource("1_65hq4")

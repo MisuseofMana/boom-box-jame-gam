@@ -1,10 +1,7 @@
 extends Node2D
+class_name LevelAudioOptions
 
-const FIRST = preload("uid://w0sq6gxo870n")
-const SECOND = preload("uid://cemibwhpraqbe")
-const THIRD = preload("uid://bdyua8iyyit0i")
-
-var music_files : Array[AudioStreamWAV] = [FIRST, SECOND, THIRD]
+@export var music_files : Array[AudioStreamWAV] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6busjxxo0tvv"]
+[gd_scene load_steps=23 format=3 uid="uid://c6busjxxo0tvv"]
 
 [ext_resource type="Script" uid="uid://r4gos8dw23h4" path="res://scenes/flow_bar.gd" id="1_cafhp"]
 [ext_resource type="Texture2D" uid="uid://cds8oqv3r3gp6" path="res://assets/boombox.png" id="2_f65wk"]
 [ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="3_lluvv"]
+[ext_resource type="Texture2D" uid="uid://bnaviu1uojt53" path="res://assets/timer_card.png" id="3_relnb"]
 [ext_resource type="Texture2D" uid="uid://cof8ne0uiad37" path="res://assets/inputs/input8.png" id="4_6g8rg"]
 [ext_resource type="AudioStream" uid="uid://cdf33iujaylql" path="res://assets/audio/actions/hitHurt(3).wav" id="4_f65wk"]
 [ext_resource type="Texture2D" uid="uid://c1yysib874co2" path="res://assets/inputs/input1.png" id="6_relnb"]
@@ -97,21 +98,27 @@ _data = {
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_cafhp")
+level_timer = 30
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(145, 145.90001)
+position = Vector2(144, 143)
 sprite_frames = SubResource("SpriteFrames_tbcdj")
 autoplay = "default"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 121.70001
-offset_top = 136.0
-offset_right = 167.70001
-offset_bottom = 142.0
+offset_left = 120.70001
+offset_top = 133.09999
+offset_right = 166.70001
+offset_bottom = 139.09999
 theme_override_styles/background = SubResource("StyleBoxFlat_ckvwl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nlqja")
 max_value = 10.0
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(144, 171)
+scale = Vector2(1.4875948, 1.4076487)
+texture = ExtResource("3_relnb")
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -145,6 +152,25 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 theme = ExtResource("3_lluvv")
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -17.416687
+offset_right = 12.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 22
+text = "225"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -285,4 +311,8 @@ texture = ExtResource("10_fnufe")
 expand_mode = 1
 flip_h = true
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

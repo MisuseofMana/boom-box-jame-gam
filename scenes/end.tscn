@@ -1,105 +1,64 @@
-[gd_scene load_steps=15 format=4 uid="uid://pujirl51cm5p"]
+[gd_scene load_steps=9 format=4 uid="uid://pujirl51cm5p"]
 
 [ext_resource type="Script" uid="uid://gm0o6ev4j4m8" path="res://scenes/end.gd" id="1_p7m4f"]
 [ext_resource type="TileSet" uid="uid://rv6pij2ulrk1" path="res://assets/worldtiels.tres" id="3_8hmjt"]
+[ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="3_nl5ow"]
 [ext_resource type="AudioStream" uid="uid://bee36rg6asj4b" path="res://assets/audio/main_menu.mp3" id="4_bvfni"]
-[ext_resource type="PackedScene" uid="uid://dr621i8fpr21" path="res://scenes/interactions/tutorial_machine.tscn" id="5_stj65"]
 [ext_resource type="PackedScene" uid="uid://be40e243xjyil" path="res://actors/player/player.tscn" id="7_liw33"]
 [ext_resource type="PackedScene" uid="uid://b7ai4m3ec2obh" path="res://actors/ufo.tscn" id="8_wrlrt"]
 [ext_resource type="PackedScene" uid="uid://c6busjxxo0tvv" path="res://scenes/boombox.tscn" id="9_gm2es"]
-[ext_resource type="Texture2D" uid="uid://bcr5itf0vwsr1" path="res://assets/alien-character.png" id="10_6tafp"]
 
 [sub_resource type="Curve2D" id="Curve2D_ee763"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -175, 29, 0, 0, 0, 0, -237, 26, 0, 0, 0, 0, -177, 21, 0, 0, 0, 0, -108, 26, 0, 0, 0, 0, -175, 29)
+"points": PackedVector2Array(0, 0, 0, 0, -175, 28, 0, 0, 0, 0, -237, 26, 0, 0, 0, 0, -176, 26, 0, 0, 0, 0, -108, 26, 0, 0, 0, 0, -175, 28)
 }
 point_count = 5
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f31uk"]
-atlas = ExtResource("10_6tafp")
-region = Rect2(160, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gnai3"]
-atlas = ExtResource("10_6tafp")
-region = Rect2(176, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8kv5"]
-atlas = ExtResource("10_6tafp")
-region = Rect2(192, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxn3v"]
-atlas = ExtResource("10_6tafp")
-region = Rect2(208, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_14jow"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f31uk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gnai3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8kv5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dxn3v")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
 
 [node name="End" type="Node2D"]
 script = ExtResource("1_p7m4f")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -77.0
+offset_left = -175.0
 offset_top = -51.0
-offset_right = 230.0
+offset_right = 453.0
 offset_bottom = 233.0
 color = Color(0.15294118, 0.15294118, 0.26666668, 1)
 
-[node name="Boombox" parent="." instance=ExtResource("9_gm2es")]
-max_out_flow = true
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(142, 87)
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_left = -68.0
+offset_top = -5.0
+offset_right = 59.0
+offset_bottom = 18.0
+theme = ExtResource("3_nl5ow")
+text = "That's all for now, thanks for playing the demo!"
+horizontal_alignment = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(80, 28)
-tile_map_data = PackedByteArray("AAAEAP//AAAGAAAAAGAEAAAAAAAFAAAAAGAEAAEAAAACAAAAAGAEAAIAAAABAAAAAGADAAMAAAAGAAAAAAACAAMAAAAFAAAAAAABAAMAAAAEAAAAAAAAAAMAAAADAAAAAAD//wMAAAACAAAAAAD+/wMAAAAGAAAAAAD9/wMAAAAFAAAAAAD8/wMAAAAEAAAAAAD7/wMAAAADAAAAAAD6////AAAAAAAAAFD6/wAAAAABAAAAAFD6/wEAAAAEAAAAAFD6/wIAAAAFAAAAAFD6/wMAAAADAAMAAAAEAAMAAAAFAAMAAAD6//7/AAADAAEAAAAEAP7/AAAFAAEAAAD7//7/AAAGAAAAADD8//7/AAAFAAAAADD9//7/AAAGAAAAADD+//7/AAAFAAAAADD///7/AAAEAAAAADAAAP7/AAADAAAAADABAP7/AAACAAAAADACAP7/AAABAAAAADADAP7/AAAAAAAAADA=")
+position = Vector2(144, 46)
+tile_map_data = PackedByteArray("AAAEAP//AAAFAAEAAAAEAAAAAAAFAAAAAGAEAAEAAAADAAUAADAEAAIAAAABAAAAAGD6////AAADAAEAAAD6/wAAAAABAAAAAFD6/wEAAAADAAUAAAD6/wIAAAAFAAAAAFD7////AAAGAAAAADD8////AAAFAAAAADD9////AAAGAAAAADD+////AAAFAAAAADD/////AAAEAAAAADAAAP//AAADAAAAADABAP//AAACAAAAADACAP//AAABAAAAADADAP//AAAAAAAAADD9/wEAAAAHAAEAAFD8/wEAAAAHAAIAAFD7/wEAAAAHAAMAAFAAAAEAAAAHAAIAAFD//wEAAAAHAAEAAFD+/wEAAAAHAAIAAFADAAEAAAAHAAEAAFACAAEAAAAHAAIAAFABAAEAAAAHAAEAAFD6/wQAAAADAAMAAAD7/wQAAAADAAAAAAD8/wQAAAAEAAAAAAD9/wQAAAAFAAAAAAD+/wQAAAAGAAAAAAD//wQAAAACAAAAAAAAAAQAAAADAAAAAAABAAQAAAAEAAAAAAACAAQAAAAFAAAAAAADAAQAAAAGAAAAAAAEAAQAAAAFAAMAAAD6/wMAAAADAAIAAAAEAAMAAAAFAAIAAAA=")
 tile_set = ExtResource("3_8hmjt")
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(247, 3)
+position = Vector2(309, 28)
 curve = SubResource("Curve2D_ee763")
 
 [node name="UFO" parent="Path2D" instance=ExtResource("8_wrlrt")]
-position = Vector2(-175, 29)
+position = Vector2(-175, 28)
 rotation = 0.010694779
 rotates = false
 
-[node name="TutorialMachine" parent="." instance=ExtResource("5_stj65")]
-position = Vector2(22, 76)
-hint_text = "Nice work! 
-That's all I could make in the deadline! "
-
-[node name="TutorialMachine2" parent="." instance=ExtResource("5_stj65")]
-position = Vector2(125, 76)
-hint_text = "Refresh the page to play again. 
-Thanks for playing!"
-
 [node name="PlayerBody" parent="." instance=ExtResource("7_liw33")]
-position = Vector2(72, 72)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.28235295, 0.9647059, 0.8235294, 1)
-position = Vector2(-269, 116)
-sprite_frames = SubResource("SpriteFrames_14jow")
-autoplay = "default"
-frame_progress = 0.8932492
+position = Vector2(137, 107)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_bvfni")
+
+[node name="Boombox" parent="." instance=ExtResource("9_gm2es")]
+max_out_flow = true
+disable_timer = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

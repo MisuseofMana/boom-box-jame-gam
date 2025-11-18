@@ -12,8 +12,13 @@ signal flow_up
 signal flow_down
 signal switch_to_new_level
 signal new_track
+signal reset_level
 
 @onready var bgm_controller = $BGMController
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug"):
+		max_out_flow()
 
 func change_music(music_file: AudioStreamWAV):
 	if not bgm_controller.is_queued_for_deletion():

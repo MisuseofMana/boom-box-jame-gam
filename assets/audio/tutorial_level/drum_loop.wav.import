@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://unlhu8ac2iba"
-path="res://.godot/imported/drum_loop.wav-3937069fbc8c22b70e937b3ddecab5a3.sample"
+path="res://.godot/imported/drum_loop.wav-23a2ac44171cd28ce5b2c2f7a1100421.sample"
 
 [deps]
 
-source_file="res://assets/audio/drum_loop.wav"
-dest_files=["res://.godot/imported/drum_loop.wav-3937069fbc8c22b70e937b3ddecab5a3.sample"]
+source_file="res://assets/audio/tutorial_level/drum_loop.wav"
+dest_files=["res://.godot/imported/drum_loop.wav-23a2ac44171cd28ce5b2c2f7a1100421.sample"]
 
 [params]
 

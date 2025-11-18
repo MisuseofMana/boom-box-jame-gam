@@ -23,7 +23,6 @@ func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite_2d.animation == 'explode':
 		sfx.play()
 		animated_sprite_2d.hide()
-		EventBus.increase_flow()
 
 func disable_collision():
 	collision_shape_2d.disabled = true

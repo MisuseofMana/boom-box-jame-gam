@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://um4arpfeyalu" path="res://scenes/interactions/tutorial_machine.gd" id="1_2why3"]
 [ext_resource type="Texture2D" uid="uid://0p3mw1cs8hoe" path="res://assets/terminal.png" id="2_s1crm"]
-[ext_resource type="Theme" uid="uid://bm8nk7ugs8pr0" path="res://themes/hint_theme.tres" id="3_s1crm"]
+[ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="3_s1crm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0w0r"]
 atlas = ExtResource("2_s1crm")
@@ -105,6 +105,10 @@ animations = [{
 radius = 27.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0w0r"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.28627452, 0.3019608, 0.49411765, 1)
 border_width_left = 1
 border_width_top = 1

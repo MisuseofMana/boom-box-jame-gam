@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cq6v36cvru5v6"
-path="res://.godot/imported/max_flow.wav-69a11989b26f4926e1eb93864d3b7795.sample"
+path="res://.godot/imported/max_flow.wav-5ca294cbee47b58ee18772da5a21149d.sample"
 
 [deps]
 
-source_file="res://assets/audio/max_flow.wav"
-dest_files=["res://.godot/imported/max_flow.wav-69a11989b26f4926e1eb93864d3b7795.sample"]
+source_file="res://assets/audio/tutorial_level/max_flow.wav"
+dest_files=["res://.godot/imported/max_flow.wav-5ca294cbee47b58ee18772da5a21149d.sample"]
 
 [params]
 

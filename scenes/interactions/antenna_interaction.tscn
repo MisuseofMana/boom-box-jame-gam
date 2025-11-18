@@ -70,7 +70,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"broadcast",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -90,6 +90,7 @@ script = ExtResource("1_a0el6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eapqw")
 animation = &"broadcast"
+autoplay = "default"
 offset = Vector2(0, -16)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -104,18 +105,17 @@ shape = SubResource("CapsuleShape2D_6tg1g")
 [node name="Label" type="Label" parent="."]
 visible = false
 offset_left = -20.0
-offset_top = -51.0
+offset_top = -52.0
 offset_right = 20.0
-offset_bottom = -28.0
+offset_bottom = -29.0
 theme = ExtResource("3_yqchj")
-text = "Press     
-
-to proceed."
+theme_override_constants/line_spacing = -3
+text = "Press     "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="Sprite2D" parent="Label"]
-position = Vector2(27, 8)
+position = Vector2(27, 12)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_t2rm4")
 
