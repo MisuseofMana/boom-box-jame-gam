@@ -1,0 +1,127 @@
+[gd_scene load_steps=16 format=3 uid="uid://c6busjxxo0tvv"]
+
+[ext_resource type="Script" uid="uid://r4gos8dw23h4" path="res://scenes/flow_bar.gd" id="1_cafhp"]
+[ext_resource type="Texture2D" uid="uid://cds8oqv3r3gp6" path="res://assets/boombox.png" id="2_f65wk"]
+[ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="3_lluvv"]
+[ext_resource type="AudioStream" uid="uid://cdf33iujaylql" path="res://assets/audio/actions/hitHurt(3).wav" id="4_f65wk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckvwl"]
+atlas = ExtResource("2_f65wk")
+region = Rect2(0, 0, 98, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlqja"]
+atlas = ExtResource("2_f65wk")
+region = Rect2(98, 0, 98, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0epgs"]
+atlas = ExtResource("2_f65wk")
+region = Rect2(196, 0, 98, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2equ"]
+atlas = ExtResource("2_f65wk")
+region = Rect2(294, 0, 98, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbcdj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckvwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlqja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0epgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2equ")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckvwl"]
+bg_color = Color(0.15294118, 0.15294118, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlqja"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lluvv"]
+streams_count = 1
+stream_0/stream = ExtResource("4_f65wk")
+
+[sub_resource type="Animation" id="Animation_lluvv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:theme_override_styles/fill:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f65wk"]
+resource_name = "hurt"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:theme_override_styles/fill:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lluvv"]
+_data = {
+&"RESET": SubResource("Animation_lluvv"),
+&"hurt": SubResource("Animation_f65wk")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_cafhp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(72, 136)
+sprite_frames = SubResource("SpriteFrames_tbcdj")
+autoplay = "default"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 49.0
+offset_top = 126.0
+offset_right = 95.0
+offset_bottom = 132.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ckvwl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nlqja")
+max_value = 10.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 35.0
+offset_top = 110.0
+offset_right = 260.0
+offset_bottom = 133.0
+theme = ExtResource("3_lluvv")
+text = "HOLD [F] TO BREAK IT DOWN"
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_lluvv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lluvv")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

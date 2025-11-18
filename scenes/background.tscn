@@ -1,0 +1,161 @@
+[gd_scene load_steps=23 format=4 uid="uid://wqoowr2ds3q7"]
+
+[ext_resource type="TileSet" uid="uid://rv6pij2ulrk1" path="res://assets/worldtiels.tres" id="3_8efq7"]
+[ext_resource type="Texture2D" uid="uid://dodjbphyvpr3x" path="res://assets/player_note.png" id="4_1tmhi"]
+[ext_resource type="Texture2D" uid="uid://brb2ltpvce427" path="res://assets/effects.png" id="4_wax1t"]
+[ext_resource type="Texture2D" uid="uid://b1w8wysw6hnx3" path="res://assets/enemy.png" id="5_1tmhi"]
+[ext_resource type="Texture2D" uid="uid://ckpxdx6m41qr7" path="res://assets/ufo.png" id="6_l5f8m"]
+[ext_resource type="Texture2D" uid="uid://5c1qhwxh1x4p" path="res://assets/cassette.png" id="7_1tmhi"]
+[ext_resource type="Texture2D" uid="uid://bcr5itf0vwsr1" path="res://assets/alien-character.png" id="7_r2thq"]
+[ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="8_l5f8m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vm3t"]
+atlas = ExtResource("7_r2thq")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8efq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vm3t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td6w2"]
+atlas = ExtResource("4_wax1t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2thq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td6w2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8efq7"]
+atlas = ExtResource("4_1tmhi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_da6cc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8efq7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da6cc"]
+atlas = ExtResource("4_wax1t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6e46"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da6cc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0470j"]
+atlas = ExtResource("5_1tmhi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivgg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0470j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ipc"]
+atlas = ExtResource("6_l5f8m")
+region = Rect2(14, 0, 14, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xduy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4ipc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5f8m"]
+atlas = ExtResource("7_1tmhi")
+region = Rect2(14, 0, 14, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vm3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5f8m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="End" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(80, 32.333332)
+tile_map_data = PackedByteArray("AAD7//7/AAAFAAEAAGD7////AAABAAAAAFADAP7/AAAFAAEAAAADAP//AAAFAAAAAGACAP7/AAAAAAAAADABAP7/AAABAAAAADAAAP7/AAACAAAAADD///7/AAADAAAAADD+//7/AAAEAAAAADD9//7/AAAFAAAAADD8//7/AAAGAAAAADD8////AAAGAAMAAAACAP//AAAGAAMAAAABAP//AAAGAAMAAAAAAP//AAAGAAMAAAD/////AAAGAAMAAAD+////AAAGAAMAAAD9////AAAGAAMAAAD7/wAAAAADAAAAAFD7/wEAAAAEAAAAAFD7/wIAAAAFAAEAADD8/wAAAAAGAAMAAAD8/wEAAAAGAAMAAAD8/wIAAAABAAAAAAD9/wAAAAAGAAMAAAD9/wEAAAAGAAMAAAD9/wIAAAAAAAAAAAD+/wAAAAAGAAMAAAD+/wEAAAAGAAMAAAD+/wIAAAABAAAAAAD//wAAAAAGAAMAAAD//wEAAAAGAAMAAAD//wIAAAACAAAAAAAAAAAAAAAGAAMAAAAAAAEAAAAGAAMAAAAAAAIAAAADAAAAAAABAAAAAAAGAAMAAAABAAEAAAAFAAUAAAABAAIAAAAEAAAAAAACAAAAAAAGAAMAAAACAAEAAAAGAAMAAAACAAIAAAAFAAAAAAADAAAAAAADAAAAAGADAAEAAAACAAAAAGADAAIAAAAFAAEAAFA=")
+tile_set = ExtResource("3_8efq7")
+
+[node name="Animated" type="AnimatedSprite2D" parent="."]
+position = Vector2(47, 56)
+sprite_frames = SubResource("SpriteFrames_8efq7")
+
+[node name="Animated3" type="AnimatedSprite2D" parent="."]
+position = Vector2(56, 45)
+sprite_frames = SubResource("SpriteFrames_r2thq")
+
+[node name="Animated7" type="AnimatedSprite2D" parent="."]
+position = Vector2(38, 45)
+sprite_frames = SubResource("SpriteFrames_da6cc")
+
+[node name="Animated8" type="AnimatedSprite2D" parent="."]
+position = Vector2(58, 59)
+sprite_frames = SubResource("SpriteFrames_b6e46")
+
+[node name="Animated4" type="AnimatedSprite2D" parent="."]
+position = Vector2(118, 56)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_ivgg2")
+
+[node name="Animated5" type="AnimatedSprite2D" parent="."]
+position = Vector2(27, 36)
+sprite_frames = SubResource("SpriteFrames_5xduy")
+
+[node name="Animated6" type="AnimatedSprite2D" parent="."]
+position = Vector2(27, 55.333332)
+sprite_frames = SubResource("SpriteFrames_6vm3t")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 68.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 43.0
+theme = ExtResource("8_l5f8m")
+text = "HOW IT WAS MADE"
+horizontal_alignment = 1
+vertical_alignment = 1

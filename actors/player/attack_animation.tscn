@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://dypc6238h1aak"]
+
+[ext_resource type="Texture2D" uid="uid://cdxu5avygxq5x" path="res://assets/attack-animation.png" id="1_iax7h"]
+[ext_resource type="Script" uid="uid://bscob7ypq8kpg" path="res://actors/player/attack_animation.gd" id="2_l50go"]
+[ext_resource type="AudioStream" uid="uid://b1v7ik4xjddfa" path="res://assets/audio/actions/hitHurt.wav" id="3_3ypuy"]
+[ext_resource type="AudioStream" uid="uid://bng2aexb3mp4a" path="res://assets/audio/actions/hitHurt(1).wav" id="4_2j1ii"]
+[ext_resource type="AudioStream" uid="uid://dl552lh7qwi3n" path="res://assets/audio/actions/hitHurt(2).wav" id="5_2j1ii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l50go"]
+atlas = ExtResource("1_iax7h")
+region = Rect2(0, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djlsg"]
+atlas = ExtResource("1_iax7h")
+region = Rect2(9, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ypuy"]
+atlas = ExtResource("1_iax7h")
+region = Rect2(18, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j1ii"]
+atlas = ExtResource("1_iax7h")
+region = Rect2(27, 0, 9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83uh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l50go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djlsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ypuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j1ii")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l50go"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_83uh7"]
+streams_count = 3
+stream_0/stream = ExtResource("3_3ypuy")
+stream_1/stream = ExtResource("4_2j1ii")
+stream_2/stream = ExtResource("5_2j1ii")
+
+[node name="AttackAnimation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_83uh7")
+frame = 3
+frame_progress = 1.0
+offset = Vector2(0, -8)
+script = ExtResource("2_l50go")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -9)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_l50go")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_83uh7")
+pitch_scale = 0.9
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

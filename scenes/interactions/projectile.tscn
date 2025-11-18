@@ -1,0 +1,59 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpi0csq2b3hfc"]
+
+[ext_resource type="SpriteFrames" uid="uid://opgdkqai6txn" path="res://scenes/interactions/player_projectile.tres" id="1_8njoc"]
+[ext_resource type="Script" uid="uid://c6xy1b1dt5xgt" path="res://scenes/interactions/projectile.gd" id="1_u82rl"]
+[ext_resource type="AudioStream" uid="uid://b5d7th3d4ohfg" path="res://assets/audio/actions/explosion(1).wav" id="3_3atfe"]
+[ext_resource type="AudioStream" uid="uid://dbenxdsopep2t" path="res://assets/audio/actions/shoot (1).wav" id="3_k6dkc"]
+[ext_resource type="AudioStream" uid="uid://cwvtumbg5y5e5" path="res://assets/audio/actions/explosion(2).wav" id="4_eh1o0"]
+[ext_resource type="AudioStream" uid="uid://cck4s6i222dmu" path="res://assets/audio/actions/shoot (2).wav" id="4_gl5ud"]
+[ext_resource type="AudioStream" uid="uid://ccayowcobrkqw" path="res://assets/audio/actions/shoot (3).wav" id="5_0s2v5"]
+[ext_resource type="AudioStream" uid="uid://c31akbpuqlmar" path="res://assets/audio/actions/explosion.wav" id="5_enhju"]
+[ext_resource type="AudioStream" uid="uid://c2jxqyucqo7eg" path="res://assets/audio/actions/shoot (4).wav" id="6_iivw3"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_48a54"]
+streams_count = 4
+stream_0/stream = ExtResource("3_k6dkc")
+stream_1/stream = ExtResource("4_gl5ud")
+stream_2/stream = ExtResource("5_0s2v5")
+stream_3/stream = ExtResource("6_iivw3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u82rl"]
+streams_count = 3
+stream_0/stream = ExtResource("3_3atfe")
+stream_1/stream = ExtResource("4_eh1o0")
+stream_2/stream = ExtResource("5_enhju")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o86e7"]
+radius = 4.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_8njoc")
+animation = &"on_hit"
+autoplay = "default"
+script = ExtResource("1_u82rl")
+sprite_sheet = ExtResource("1_8njoc")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_48a54")
+pitch_scale = 0.9
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_u82rl")
+pitch_scale = 0.9
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o86e7")
+debug_color = Color(0.98257905, 0.13260928, 1.92523e-07, 0.41960785)
+
+[connection signal="animation_finished" from="." to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="HitSound" to="." method="_on_hit_sound_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

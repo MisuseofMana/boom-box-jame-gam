@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://be40e243xjyil"]
+
+[ext_resource type="Script" uid="uid://c23s3n3hy3mqc" path="res://actors/player/player.gd" id="1_3mip4"]
+[ext_resource type="SpriteFrames" uid="uid://dx3f3w2d4uef6" path="res://actors/player/player_frames.tres" id="1_674bt"]
+[ext_resource type="PackedScene" uid="uid://c44xjtbiis4l3" path="res://components/gravity_component.tscn" id="3_ax26v"]
+[ext_resource type="PackedScene" uid="uid://xjsx1ooi6ocj" path="res://components/input_component.tscn" id="4_lsqbn"]
+[ext_resource type="PackedScene" uid="uid://b17ndbvsr7tro" path="res://components/movement_component.tscn" id="5_6p1w3"]
+[ext_resource type="PackedScene" uid="uid://dosi3bo5fx2o0" path="res://components/animation_component.tscn" id="6_15y17"]
+[ext_resource type="PackedScene" uid="uid://bc5c402wr3qey" path="res://components/advanced_jump_component.tscn" id="7_bop6h"]
+[ext_resource type="AudioStream" uid="uid://cdf33iujaylql" path="res://assets/audio/actions/hitHurt(3).wav" id="8_a744p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ilk7j"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilk7j"]
+radius = 9.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ax26v"]
+radius = 3.0
+height = 12.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_388e2"]
+streams_count = 1
+stream_0/stream = ExtResource("8_a744p")
+
+[node name="PlayerBody" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "adv_jump_component") groups=["player"]]
+collision_layer = 4
+script = ExtResource("1_3mip4")
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+adv_jump_component = NodePath("AdvancedJumpComponent")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_674bt")
+animation = &"breakdown"
+autoplay = "idle"
+offset = Vector2(0, -8)
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_ilk7j")
+debug_color = Color(0.9675421, 0, 0.47662246, 0.41960785)
+
+[node name="InteractionBox" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_ilk7j")
+debug_color = Color(3.3691526e-07, 0.6421003, 0.32861543, 0.41960785)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 8)
+position_smoothing_speed = 10.0
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+
+[node name="HitDetection" type="Area2D" parent="."]
+position = Vector2(-2, 0)
+collision_layer = 48
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetection"]
+position = Vector2(2, -8)
+shape = SubResource("CapsuleShape2D_ax26v")
+
+[node name="GravityComponent" parent="." instance=ExtResource("3_ax26v")]
+gravity = 500.0
+
+[node name="InputComponent" parent="." instance=ExtResource("4_lsqbn")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("5_6p1w3")]
+speed = 90.0
+ground_accel_speed = 15.0
+ground_decel_speed = 20.0
+air_accel_speed = 20.0
+air_decel_speed = 30.0
+
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_15y17")]
+sprite = NodePath("../PlayerSprite")
+
+[node name="AdvancedJumpComponent" parent="." instance=ExtResource("7_bop6h")]
+jump_velocity = -150.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_388e2")
+pitch_scale = 0.8
+
+[connection signal="area_entered" from="HitDetection" to="." method="_on_hit_detection_area_entered"]
+[connection signal="just_attacked" from="AnimationComponent" to="." method="spawn_melee"]
+[connection signal="just_shot" from="AnimationComponent" to="." method="spawn_shot"]

@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://dm0iig8hhwstb"]
+
+[ext_resource type="Texture2D" uid="uid://5c1qhwxh1x4p" path="res://assets/cassette.png" id="1_l17go"]
+[ext_resource type="Script" uid="uid://cclsm62yeapnk" path="res://scenes/interactions/casette.gd" id="1_lbj32"]
+[ext_resource type="AudioStream" uid="uid://bfcikvcyliyd3" path="res://assets/audio/pickupCoin.wav" id="3_pjbbx"]
+[ext_resource type="AudioStream" uid="uid://d178opdvhunqk" path="res://assets/audio/casette_pickup.wav" id="4_eyfl7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbj32"]
+atlas = ExtResource("1_l17go")
+region = Rect2(0, 0, 14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjbbx"]
+atlas = ExtResource("1_l17go")
+region = Rect2(14, 0, 14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyfl7"]
+atlas = ExtResource("1_l17go")
+region = Rect2(28, 0, 14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wyfg"]
+atlas = ExtResource("1_l17go")
+region = Rect2(42, 0, 14, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xybm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbj32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjbbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyfl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wyfg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l17go"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_pjbbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lbj32"]
+resource_name = "float"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.51, 1),
+"transitions": PackedFloat32Array(0.5, -2, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjbbx"]
+_data = {
+&"RESET": SubResource("Animation_pjbbx"),
+&"float": SubResource("Animation_lbj32")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyfl7"]
+streams_count = 2
+stream_0/stream = ExtResource("3_pjbbx")
+stream_1/stream = ExtResource("4_eyfl7")
+
+[node name="Casette" type="Node2D"]
+script = ExtResource("1_lbj32")
+one_use = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+sprite_frames = SubResource("SpriteFrames_4xybm")
+autoplay = "default"
+frame = 2
+frame_progress = 0.26000217
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+shape = SubResource("CircleShape2D_l17go")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pjbbx")
+}
+autoplay = "float"
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_eyfl7")
+pitch_scale = 0.9
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="animation_finished" from="Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Node2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="pickup" to="." method="_on_pickup_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

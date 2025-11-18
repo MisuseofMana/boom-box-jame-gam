@@ -1,0 +1,220 @@
+[gd_scene load_steps=22 format=3 uid="uid://dr621i8fpr21"]
+
+[ext_resource type="Script" uid="uid://um4arpfeyalu" path="res://scenes/interactions/tutorial_machine.gd" id="1_2why3"]
+[ext_resource type="Texture2D" uid="uid://0p3mw1cs8hoe" path="res://assets/terminal.png" id="2_s1crm"]
+[ext_resource type="Theme" uid="uid://bm8nk7ugs8pr0" path="res://themes/hint_theme.tres" id="3_s1crm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0w0r"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di1jw"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r16ig"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td567"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dclth"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr1nd"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xil8v"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p47f"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7o3n"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd3dt"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exv47"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inhum"]
+atlas = ExtResource("2_s1crm")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7q00d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0w0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di1jw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r16ig")
+}],
+"loop": false,
+"name": &"activate",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td567")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dclth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr1nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xil8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p47f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7o3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd3dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exv47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inhum")
+}],
+"loop": true,
+"name": &"scroll",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u648s"]
+radius = 27.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0w0r"]
+bg_color = Color(0.28627452, 0.3019608, 0.49411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.54509807, 0.42745098, 0.6117647, 1)
+
+[sub_resource type="Animation" id="Animation_c0w0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_s1crm"]
+resource_name = "show_hint"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.009999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_di1jw"]
+_data = {
+&"RESET": SubResource("Animation_c0w0r"),
+&"show_hint": SubResource("Animation_s1crm")
+}
+
+[node name="TutorialMachine" type="Node2D"]
+script = ExtResource("1_2why3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7q00d")
+animation = &"activate"
+offset = Vector2(0, -8)
+
+[node name="ActivatorArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivatorArea"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_u648s")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -30.0
+offset_top = -46.0
+offset_right = 30.0
+offset_bottom = -22.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c0w0r")
+
+[node name="Label" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(25, 10)
+layout_mode = 2
+theme = ExtResource("3_s1crm")
+text = "Placeholder text here.
+Placeholder text here."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_di1jw")
+}
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="ActivatorArea" to="." method="_on_activator_area_area_entered"]
+[connection signal="area_exited" from="ActivatorArea" to="." method="_on_activator_area_area_exited"]

@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://ckoa8c0tqp68y"]
+
+[ext_resource type="Script" uid="uid://b6o0pcgwsy6lj" path="res://actors/spaceman/spaceman.gd" id="1_pciy7"]
+[ext_resource type="SpriteFrames" uid="uid://dqahyaws8ndf7" path="res://actors/spaceman/spaceman_frames.tres" id="2_6pk4i"]
+[ext_resource type="PackedScene" uid="uid://b17ndbvsr7tro" path="res://components/movement_component.tscn" id="3_pciy7"]
+[ext_resource type="PackedScene" uid="uid://dosi3bo5fx2o0" path="res://components/animation_component.tscn" id="3_ycqp5"]
+[ext_resource type="PackedScene" uid="uid://c44xjtbiis4l3" path="res://components/gravity_component.tscn" id="5_ak6e7"]
+[ext_resource type="Texture2D" uid="uid://brb2ltpvce427" path="res://assets/effects.png" id="6_ak6e7"]
+[ext_resource type="Texture2D" uid="uid://cv5wnhkpht8df" path="res://assets/blank_frame.png" id="7_8o0qj"]
+[ext_resource type="AudioStream" uid="uid://b1v7ik4xjddfa" path="res://assets/audio/actions/hitHurt.wav" id="8_vaf8w"]
+[ext_resource type="AudioStream" uid="uid://dl552lh7qwi3n" path="res://assets/audio/actions/hitHurt(2).wav" id="9_7vp2n"]
+[ext_resource type="AudioStream" uid="uid://bng2aexb3mp4a" path="res://assets/audio/actions/hitHurt(1).wav" id="10_hov0r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pciy7"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6pk4i"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ycqp5"]
+radius = 7.0
+height = 34.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o0qj"]
+atlas = ExtResource("6_ak6e7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dknr"]
+atlas = ExtResource("6_ak6e7")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlwgj"]
+atlas = ExtResource("6_ak6e7")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaf8w"]
+atlas = ExtResource("6_ak6e7")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycqp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o0qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dknr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlwgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaf8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8o0qj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_td1pd"]
+streams_count = 3
+stream_0/stream = ExtResource("8_vaf8w")
+stream_1/stream = ExtResource("9_7vp2n")
+stream_2/stream = ExtResource("10_hov0r")
+
+[node name="SpacemanBody" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "movement_component", "animation_component")]
+script = ExtResource("1_pciy7")
+gravity_component = NodePath("GravityComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_pciy7")
+
+[node name="SpacemanSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_6pk4i")
+animation = &"idle"
+offset = Vector2(0, -8)
+flip_h = true
+
+[node name="HitDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hurtbox" type="CollisionShape2D" parent="HitDetection"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_6pk4i")
+debug_color = Color(0.9760503, 0, 0.41836554, 0.41960785)
+
+[node name="Vision" type="RayCast2D" parent="."]
+position = Vector2(0, -7)
+target_position = Vector2(-40, 0)
+collision_mask = 4
+
+[node name="ChaseTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_ycqp5")]
+sprite = NodePath("../SpacemanSprite")
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_pciy7")]
+speed = 55.0
+
+[node name="GravityComponent" parent="." instance=ExtResource("5_ak6e7")]
+
+[node name="MeleeRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
+position = Vector2(0, -7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ycqp5")
+
+[node name="die" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ycqp5")
+frame = 4
+frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_td1pd")
+
+[connection signal="area_entered" from="HitDetection" to="." method="_on_hit_detection_area_entered"]
+[connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="just_attacked" from="AnimationComponent" to="." method="spawn_melee"]
+[connection signal="just_shot" from="AnimationComponent" to="." method="spawn_shot"]
+[connection signal="area_entered" from="MeleeRange" to="." method="_on_melee_range_area_entered"]
+[connection signal="animation_finished" from="die" to="." method="_on_die_animation_finished"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://nlor5a5xg034"]
+
+[ext_resource type="Script" uid="uid://c0vdk15ho3e3x" path="res://Eventbus/EventBus.gd" id="1_c65p6"]
+[ext_resource type="PackedScene" uid="uid://s065pm758oga" path="res://components/bgm_controller.tscn" id="2_ebo3j"]
+[ext_resource type="AudioStream" uid="uid://unlhu8ac2iba" path="res://assets/audio/drum_loop.wav" id="3_1qt7y"]
+
+[node name="EventBus" type="Node2D"]
+script = ExtResource("1_c65p6")
+
+[node name="BGMController" parent="." instance=ExtResource("2_ebo3j")]
+audio_loop = ExtResource("3_1qt7y")

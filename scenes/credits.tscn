@@ -1,0 +1,172 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4xwr4jquqqv1"]
+
+[ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="1_0bpdh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bpdh"]
+bg_color = Color(0.15294118, 0.15294118, 0.26666668, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0bpdh"]
+color = Color(0.54509807, 0.42745098, 0.6117647, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2ckv8"]
+color = Color(0.54509807, 0.42745098, 0.6117647, 1)
+
+[node name="Credits" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0bpdh")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0bpdh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Art & Programming by Me:"
+horizontal_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "shinbone"
+underline = 1
+uri = "https://shinbone.itch.io/"
+
+[node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_0bpdh")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Main Menu Track"
+horizontal_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Creeper_Ciller78"
+underline = 1
+uri = "https://freesound.org/people/Creeper_Ciller78/sounds/344995/"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Record Scratches"
+horizontal_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "G_M_D_THREE"
+underline = 1
+uri = "https://https://freesound.org/people/G_M_D_THREE/sounds/377774/.org/people/Creeper_Ciller78/sounds/344995/"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "YO"
+horizontal_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Timbre"
+underline = 1
+uri = "https://freesound.org/people/Timbre/sounds/111259/"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Tutorial Level"
+horizontal_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "ilip33"
+underline = 1
+uri = "https://freesound.org/people/ilip33/sounds/593246/"
+
+[node name="LinkButton2" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "CVLTIV8R"
+underline = 1
+uri = "https://freesound.org/people/CVLTIV8R/sounds/790578/"
+
+[node name="LinkButton3" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "pablo98marin"
+underline = 1
+uri = "https://freesound.org/people/pablo98marin/sounds/827249/"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="LinkButton4" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "danlucaz"
+underline = 1
+uri = "https://freesound.org/people/danlucaz/sounds/517740/"
+
+[node name="LinkButton5" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "scale75"
+underline = 1
+uri = "https://freesound.org/people/scale75/sounds/323250/"
+
+[node name="LinkButton6" type="LinkButton" parent="Control/PanelContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "scale75"
+underline = 1
+uri = "https://freesound.org/people/scale75/sounds/323250/"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_2ckv8")
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "PRESS [C] to Close Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
