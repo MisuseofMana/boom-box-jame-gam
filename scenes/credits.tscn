@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4xwr4jquqqv1"]
+[gd_scene load_steps=6 format=3 uid="uid://c4xwr4jquqqv1"]
 
 [ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="1_0bpdh"]
+[ext_resource type="Texture2D" uid="uid://buow7u0esrrvh" path="res://assets/inputs/input5.png" id="2_2ckv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bpdh"]
 bg_color = Color(0.15294118, 0.15294118, 0.26666668, 1)
@@ -164,9 +165,24 @@ uri = "https://freesound.org/people/scale75/sounds/323250/"
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_2ckv8")
 
-[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "PRESS [C] to Close Credits"
+text = "Press"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+texture = ExtResource("2_2ckv8")
+
+[node name="Label3" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "to Close Credits"
 horizontal_alignment = 1
 vertical_alignment = 1

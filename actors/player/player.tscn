@@ -57,6 +57,7 @@ debug_color = Color(3.3691526e-07, 0.6421003, 0.32861543, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 8)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 10.0
 drag_left_margin = 0.1
 drag_top_margin = 0.1

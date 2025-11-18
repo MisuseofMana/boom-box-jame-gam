@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://2yvq6yiiep7y"]
+[gd_scene load_steps=58 format=3 uid="uid://2yvq6yiiep7y"]
 
 [ext_resource type="Texture2D" uid="uid://bkgp3pb17nuvb" path="res://assets/title-card.png" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://b4e7xyjnkrrsn" path="res://scenes/main_menu.gd" id="1_lgwnu"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b1w8wysw6hnx3" path="res://assets/enemy.png" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://brb2ltpvce427" path="res://assets/effects.png" id="7_oa1go"]
 [ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="9_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://cce60urqx1kob" path="res://assets/inputs/input6.png" id="12_5pajh"]
 [ext_resource type="Texture2D" uid="uid://dh40uihhy606j" path="res://assets/alien-splash.png" id="12_flqon"]
+[ext_resource type="Texture2D" uid="uid://buow7u0esrrvh" path="res://assets/inputs/input5.png" id="13_j7ex8"]
 [ext_resource type="AudioStream" uid="uid://wu3gl05xjxva" path="res://assets/audio/yo.mp3" id="13_rcqid"]
 [ext_resource type="PackedScene" uid="uid://c4xwr4jquqqv1" path="res://scenes/credits.tscn" id="14_1ajci"]
 
@@ -369,99 +371,119 @@ _data = {
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_lgwnu")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -7.0
+offset_right = 296.0
+offset_bottom = 195.0
+color = Color(0.15294118, 0.15294118, 0.26666668, 1)
+
 [node name="TitleCard" type="Sprite2D" parent="."]
-position = Vector2(72, 80)
+position = Vector2(148, 91)
 texture = ExtResource("1_ekxnf")
 
 [node name="RecordScratches" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(76, 11)
 stream = ExtResource("2_5dd4i")
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(76, 11)
 stream = ExtResource("2_tbmy8")
 autoplay = true
 
 [node name="wiggles" type="AnimatedSprite2D" parent="."]
-position = Vector2(72, 107)
+visible = false
+position = Vector2(148, 118)
 sprite_frames = SubResource("SpriteFrames_rtw2f")
 autoplay = "default"
 frame_progress = 0.51441544
 
 [node name="ufo" type="AnimatedSprite2D" parent="."]
-position = Vector2(34, 61)
+position = Vector2(110, 72)
 sprite_frames = SubResource("SpriteFrames_flqon")
 autoplay = "default"
 frame_progress = 0.28782275
 
 [node name="breakdoewn" type="AnimatedSprite2D" parent="."]
-position = Vector2(22, 37)
+position = Vector2(98, 48)
 sprite_frames = SubResource("SpriteFrames_5pajh")
 autoplay = "default"
 frame_progress = 0.48952925
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(126, 17)
+position = Vector2(202, 28)
 sprite_frames = SubResource("SpriteFrames_gw5y6")
 autoplay = "default"
 frame_progress = 0.7955972
 
 [node name="walk" type="AnimatedSprite2D" parent="."]
-position = Vector2(118, 44)
+position = Vector2(194, 55)
 sprite_frames = SubResource("SpriteFrames_1acrt")
 autoplay = "default"
 frame_progress = 0.2718085
 
 [node name="enemy" type="AnimatedSprite2D" parent="."]
-position = Vector2(12, 16)
+position = Vector2(88, 27)
 sprite_frames = SubResource("SpriteFrames_1a85y")
 autoplay = "default"
 frame_progress = 0.27965763
 flip_h = true
 
 [node name="note1" type="AnimatedSprite2D" parent="."]
-position = Vector2(133, 36)
+position = Vector2(209, 47)
 sprite_frames = SubResource("SpriteFrames_engjn")
 autoplay = "default"
 frame_progress = 0.7179915
 
 [node name="note2" type="AnimatedSprite2D" parent="."]
-position = Vector2(12, 49)
+position = Vector2(88, 60)
 sprite_frames = SubResource("SpriteFrames_6vcge")
 autoplay = "default"
 frame_progress = 0.6782206
 
 [node name="Label" type="Label" parent="."]
-offset_left = -18.0
-offset_top = 61.0
-offset_right = 166.0
-offset_bottom = 84.0
+offset_left = 59.0
+offset_top = 67.0
+offset_right = 243.0
+offset_bottom = 90.0
 theme = ExtResource("9_jk1qb")
 theme_override_colors/font_color = Color(0.9490196, 0.827451, 0.67058825, 1)
-text = "PRESS [ENTER] or START"
+text = "Press     to play game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(141, 80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_5pajh")
+
 [node name="Label2" type="Label" parent="."]
-offset_left = -20.0
-offset_top = 84.0
-offset_right = 164.0
-offset_bottom = 107.0
+offset_left = 58.0
+offset_top = 78.0
+offset_right = 242.0
+offset_bottom = 101.0
 theme = ExtResource("9_jk1qb")
 theme_override_colors/font_color = Color(0.9490196, 0.827451, 0.67058825, 1)
-text = "press [C] for credits"
+text = "or press     for credits"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(147, 90)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_j7ex8")
 
 [node name="Node2D" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(71, 240)
 
 [node name="Background" type="Sprite2D" parent="Node2D"]
-position = Vector2(1.0000029, -88)
+position = Vector2(74.99999, -87.99999)
 scale = Vector2(0.625, 176)
 texture = SubResource("GradientTexture1D_rcqid")
 
 [node name="AlienSplash" type="Sprite2D" parent="Node2D"]
-position = Vector2(1, 0)
+position = Vector2(75, 14)
 texture = ExtResource("12_flqon")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]

@@ -1,9 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6busjxxo0tvv"]
+[gd_scene load_steps=22 format=3 uid="uid://c6busjxxo0tvv"]
 
 [ext_resource type="Script" uid="uid://r4gos8dw23h4" path="res://scenes/flow_bar.gd" id="1_cafhp"]
 [ext_resource type="Texture2D" uid="uid://cds8oqv3r3gp6" path="res://assets/boombox.png" id="2_f65wk"]
 [ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="3_lluvv"]
+[ext_resource type="Texture2D" uid="uid://cof8ne0uiad37" path="res://assets/inputs/input8.png" id="4_6g8rg"]
 [ext_resource type="AudioStream" uid="uid://cdf33iujaylql" path="res://assets/audio/actions/hitHurt(3).wav" id="4_f65wk"]
+[ext_resource type="Texture2D" uid="uid://c1yysib874co2" path="res://assets/inputs/input1.png" id="6_relnb"]
+[ext_resource type="Texture2D" uid="uid://7iwu6hydsybk" path="res://assets/inputs/input2.png" id="7_w13qe"]
+[ext_resource type="Texture2D" uid="uid://dsmejhaxo7ok8" path="res://assets/inputs/input3.png" id="8_anl01"]
+[ext_resource type="Texture2D" uid="uid://crtcfb3oyepms" path="res://assets/inputs/input4.png" id="9_wsig7"]
+[ext_resource type="Texture2D" uid="uid://bt1s7ch65s64" path="res://assets/inputs/input9.png" id="10_fnufe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckvwl"]
 atlas = ExtResource("2_f65wk")
@@ -93,15 +99,15 @@ _data = {
 script = ExtResource("1_cafhp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(72, 136)
+position = Vector2(145, 145.90001)
 sprite_frames = SubResource("SpriteFrames_tbcdj")
 autoplay = "default"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 49.0
-offset_top = 126.0
-offset_right = 95.0
-offset_bottom = 132.0
+offset_left = 121.70001
+offset_top = 136.0
+offset_right = 167.70001
+offset_bottom = 142.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ckvwl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nlqja")
 max_value = 10.0
@@ -109,12 +115,18 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 35.0
-offset_top = 110.0
-offset_right = 260.0
-offset_bottom = 133.0
+offset_left = 110.70001
+offset_top = 112.0
+offset_right = 180.70001
+offset_bottom = 135.0
 theme = ExtResource("3_lluvv")
-text = "HOLD [F] TO BREAK IT DOWN"
+text = "HOLD    TO BREAK IT DOWN"
+
+[node name="Sprite2D" type="Sprite2D" parent="Label"]
+position = Vector2(16.999992, 3)
+rotation = -3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6g8rg")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_lluvv")
@@ -123,5 +135,154 @@ stream = SubResource("AudioStreamRandomizer_lluvv")
 libraries = {
 &"": SubResource("AnimationLibrary_lluvv")
 }
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme = ExtResource("3_lluvv")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_relnb")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("7_w13qe")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Shoot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("8_anl01")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Punch"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("9_wsig7")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(6, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_fnufe")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(6, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_fnufe")
+expand_mode = 1
+flip_h = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

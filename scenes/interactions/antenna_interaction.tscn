@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dw0ycgeeojqcv"]
+[gd_scene load_steps=16 format=3 uid="uid://dw0ycgeeojqcv"]
 
 [ext_resource type="Texture2D" uid="uid://bdga0m4bekwg6" path="res://assets/antenna.png" id="1_6tg1g"]
 [ext_resource type="Script" uid="uid://bwyvluvnxafv3" path="res://scenes/interactions/antenna_interaction.gd" id="1_a0el6"]
 [ext_resource type="Theme" uid="uid://c2wda1tq64nkw" path="res://themes/base_theme.tres" id="3_yqchj"]
+[ext_resource type="Texture2D" uid="uid://crtcfb3oyepms" path="res://assets/inputs/input4.png" id="4_t2rm4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqchj"]
 atlas = ExtResource("1_6tg1g")
@@ -107,10 +108,16 @@ offset_top = -51.0
 offset_right = 20.0
 offset_bottom = -28.0
 theme = ExtResource("3_yqchj")
-text = "Press [E]
+text = "Press     
+
 to proceed."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="Sprite2D" parent="Label"]
+position = Vector2(27, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_t2rm4")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
